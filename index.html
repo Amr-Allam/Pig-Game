@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pig Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,700&family=Nunito:wght@200;400;700&family=Work+Sans:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="CSS/all.min.css" />
+    <link rel="stylesheet" href="CSS/normalize.css" />
+    <link rel="stylesheet" href="CSS/main.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="player1">
+        <div class="name-container">
+          <button class="btn rename">
+            <i class="fa-solid fa-pen rename-icon"></i>
+          </button>
+          <h2 class="name name1">PLAYER 1</h2>
+        </div>
+        <p class="score">0</p>
+        <div class="points">
+          <p class="points-label">points</p>
+          <p class="points-score">0</p>
+        </div>
+      </section>
+      <section class="player2">
+        <div class="name-container">
+          <button class="btn rename">
+            <i class="fa-solid fa-pen rename-icon"></i>
+          </button>
+          <h2 class="name name2">PLAYER 2</h2>
+        </div>
+        <p class="score">0</p>
+        <div class="points">
+          <p class="points-label">points</p>
+          <p class="points-score">0</p>
+        </div>
+      </section>
+      <section class="buttons-container">
+        <button class="btn new">
+          <i
+            class="fa-solid fa-arrows-rotate arrow"
+            style="--fa-animation-duration: 0.5s"
+          ></i>
+          New Game
+        </button>
+        <div class="dice">
+          <i class="fa-solid fa-dice-one dice-empty"><span></span></i>
+          <i class="fa-solid dice-number" style="--fa-animation-duration: 2s"
+            ><span></span
+          ></i>
+        </div>
+        <div class="game-buttons">
+          <button class="btn roll">
+            <i
+              class="fa-solid fa-dice roll-dice"
+              style="--fa-animation-duration: 5s"
+            ></i>
+            Roll Dice
+          </button>
+          <button class="btn hold">
+            <i
+              class="fa-solid fa-shield shield"
+              style="--fa-animation-duration: 0.5s"
+            ></i>
+            Hold
+          </button>
+        </div>
+      </section>
+      <button class="btn info">
+        <i class="fa-solid fa-question info-icon"></i>
+      </button>
+      <div class="overlay"></div>
+      <div class="info-menu">
+        <button class="close btn"><i class="fa-solid fa-xmark"></i></button>
+        <h3 class="info-title"><i class="fa-solid fa-dice"></i> How To Play</h3>
+        <ul class="info-list">
+          <li>
+            <i class="fa-solid fa-dice-one"></i> You get points by rolling the
+            dice.
+          </li>
+          <li>
+            <i class="fa-solid fa-dice-two"></i> The amount of points added
+            depends on the number you rolled.
+          </li>
+          <li>
+            <i class="fa-solid fa-dice-three"></i> You lose the points and your
+            turn ends if you roll a 1.
+          </li>
+          <li>
+            <i class="fa-solid fa-dice-four"></i> Hold to add the points to your
+            score and end your .
+          </li>
+          <li>
+            <i class="fa-solid fa-dice-five"></i>Your turn is over when you
+            hold.
+          </li>
+          <li>
+            <i class="fa-solid fa-dice-six"></i> The first player to score 50
+            points wins.
+          </li>
+        </ul>
+      </div>
+      <div class="rename-window">
+        <div class="content">
+          <input type="text" placeholder="Enter a name" class="new-name" />
+          <button class="btn ok-btn">Ok</button>
+        </div>
+      </div>
+    </main>
+    <script src="JS/script.js"></script>
+  </body>
+</html>
