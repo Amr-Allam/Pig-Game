@@ -13,6 +13,10 @@ body {
   position: relative;
   padding: 15px;
 }
+::selection {
+  background-color: #c7365f;
+  color: white;
+}
 ul {
   list-style: none;
 }
@@ -26,12 +30,12 @@ ul {
   color: #444;
   outline: none;
   box-shadow: 0 5px 5px 1px rgb(0 0 0 / 30%);
-  cursor: pointer;
   transition: 0.3s;
+  /* -webkit-tap-highlight-color: transparent; */
 }
-@media (max-width: 767px) {
-  .buttons-container .btn {
-    margin-bottom: 0;
+@media (min-width: 768px) {
+  .btn {
+    cursor: pointer;
   }
 }
 .overlay {
@@ -173,6 +177,11 @@ section .points .points-label {
 }
 section .points .points-score {
   font-size: 35px;
+}
+.points-label::selection,
+.points-score::selection {
+  background-color: white;
+  color: #c7365f;
 }
 /* Buttons Container */
 .buttons-container {

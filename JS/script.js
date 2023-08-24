@@ -20,20 +20,41 @@ name2.style.fontWeight = "400";
 
 // ----------------------------- Button Effects -----------------------------
 for (let x = 0; x < btn.length; x++) {
-  btn[x].addEventListener("mousedown", function () {
+  // ----------------------------- Functions -----------------------------
+  const buttonDown = function () {
     btn[x].style.transform = "translateY(2px)";
     btn[x].style.boxShadow = "0 2px 5px 1px rgb(0 0 0 / 30%)";
+  };
+  const buttonUp = function () {
+    btn[x].style.transform = "translateY(0)";
+    btn[x].style.boxShadow = "0 5px 5px 1px rgb(0 0 0 / 30%)";
+  };
+  // ----------------------------- Events -----------------------------
+  btn[x].addEventListener("mousedown", function () {
+    buttonDown();
   });
   btn[x].addEventListener("mouseup", function () {
     setTimeout(function () {
-      btn[x].style.transform = "translateY(0)";
-      btn[x].style.boxShadow = "0 5px 5px 1px rgb(0 0 0 / 30%)";
+      buttonUp();
     }, 50);
   });
   btn[x].addEventListener("mouseout", function () {
     setTimeout(function () {
-      btn[x].style.transform = "translateY(0)";
-      btn[x].style.boxShadow = "0 5px 5px 1px rgb(0 0 0 / 30%)";
+      buttonUp();
+    }, 50);
+  });
+  // ----------------------------- For Touch Screens -----------------------------
+  btn[x].addEventListener("touchstart", function () {
+    buttonDown();
+  });
+  btn[x].addEventListener("touchend", function () {
+    setTimeout(function () {
+      buttonUp();
+    }, 50);
+  });
+  btn[x].addEventListener("touchmove", function () {
+    setTimeout(function () {
+      buttonUp();
     }, 50);
   });
 }
@@ -41,16 +62,16 @@ for (let x = 0; x < btn.length; x++) {
 
 // ----------------------------- Active Player -----------------------------
 const player1active = function () {
-  player1Section.style.backgroundColor = "#ba7a98";
-  player2Section.style.backgroundColor = "#daaebc";
-  name2.style.fontWeight = "bold";
-  name1.style.fontWeight = "400";
-};
-const player2active = function () {
   player1Section.style.backgroundColor = "#daaebc";
   player2Section.style.backgroundColor = "#ba7a98";
   name1.style.fontWeight = "bold";
   name2.style.fontWeight = "400";
+};
+const player2active = function () {
+  player1Section.style.backgroundColor = "#ba7a98";
+  player2Section.style.backgroundColor = "#daaebc";
+  name2.style.fontWeight = "bold";
+  name1.style.fontWeight = "400";
 };
 // -------------------------------------------------------------------------
 
@@ -82,7 +103,7 @@ rollButton.addEventListener("click", function () {
     pointsScore[i].textContent = ptsScore + roll;
     ptsScore = Number(pointsScore[i].textContent);
   } else {
-    i === 0 ? player1active() : player2active();
+    i === 0 ? player2active() : player1active();
     ptsScore = 0;
     pointsScore[i].textContent = ptsScore;
     i = i === 0 ? 1 : 0;
@@ -108,16 +129,20 @@ holdButton.addEventListener("click", function () {
     holdScore1 = Number(score[i].textContent);
     ptsScore = 0;
     pointsScore[i].textContent = ptsScore;
-    player1active();
-    i = 1;
+    if (score[i].textContent < 50) {
+      player2active();
+      i = 1;
+    }
     // ------------------------- Player2 Holds -------------------------
   } else {
     score[i].textContent = holdScore2 + ptsScore;
     holdScore2 = Number(score[i].textContent);
     ptsScore = 0;
     pointsScore[i].textContent = ptsScore;
-    player2active();
-    i = 0;
+    if (score[i].textContent < 50) {
+      player1active();
+      i = 0;
+    }
   }
   // -------------------------- Player Wins --------------------------
   const playerWins = function (player, name1, name2) {
