@@ -31,7 +31,7 @@ ul {
   outline: none;
   box-shadow: 0 5px 5px 1px rgb(0 0 0 / 30%);
   transition: 0.3s;
-  /* -webkit-tap-highlight-color: transparent; */
+  -webkit-tap-highlight-color: transparent;
 }
 @media (min-width: 768px) {
   .btn {
@@ -329,7 +329,6 @@ section .points .points-score {
   width: 30px;
   outline: none;
   border: none;
-  cursor: pointer;
   position: absolute;
   top: 15px;
   right: 15px;
